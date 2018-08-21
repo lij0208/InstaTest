@@ -26,8 +26,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".list.ImageListActivity"
-            android:configChanges="orientation|screenSize"/>
+        <activity android:name=".list.ImageListActivity"/>
+        <activity android:name=".detail.ImageDetailActivity"/>
     </application>
 
 </manifest>
