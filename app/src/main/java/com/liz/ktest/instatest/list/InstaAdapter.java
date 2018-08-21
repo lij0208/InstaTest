@@ -20,7 +20,7 @@ public class InstaAdapter extends RecyclerView.Adapter<ImageHolder> {
 
     @Override
     public ImageHolder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new ImageHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_view, parent, false));
+        return new ImageHolder(LayoutInflater.from(parent.getContext()).inflate(R.layout.item_list_view, parent, false));
     }
 
     @Override
