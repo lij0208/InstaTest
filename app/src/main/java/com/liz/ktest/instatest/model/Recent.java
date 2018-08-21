@@ -46,7 +46,4 @@ public abstract class Recent implements Parcelable {
     public abstract String type();
 
     public abstract String filter();
-
-//    @Nullable
-//    public abstract Location location();
 }
