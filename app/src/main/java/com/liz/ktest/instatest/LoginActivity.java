@@ -10,6 +10,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
+import com.liz.ktest.instatest.list.ImageListActivity;
+
 public class LoginActivity extends AppCompatActivity {
 
     private static final String REDIRECT_URL = "http://localhost/instagram-signin";

@@ -1,9 +1,11 @@
-package com.liz.ktest.instatest;
+package com.liz.ktest.instatest.list;
 
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+
+import com.liz.ktest.instatest.R;
 
 public class ImageListActivity extends AppCompatActivity {
 
