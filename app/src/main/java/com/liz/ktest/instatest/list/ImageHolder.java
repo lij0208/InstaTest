@@ -21,6 +21,7 @@ import java.util.ArrayList;
 public class ImageHolder extends RecyclerView.ViewHolder {
 
     private ImageView imageView;
+    private ImageView playIv;
     private TextView morePhotoCountTv;
 
     private Recent recent;
@@ -29,6 +30,7 @@ public class ImageHolder extends RecyclerView.ViewHolder {
     public ImageHolder(View itemView) {
         super(itemView);
         imageView = itemView.findViewById(R.id.imageView);
+        playIv = itemView.findViewById(R.id.playIv);
         morePhotoCountTv = itemView.findViewById(R.id.morePhotoCountTv);
 
         imageView.setOnClickListener(v -> {
@@ -47,13 +49,14 @@ public class ImageHolder extends RecyclerView.ViewHolder {
             imageInfoList.addAll(recent.carousel());
         }
         else {
-            imageInfoList.add(Carousel.builder().videos(recent.images()).type(CarouselType.IMAGE.getType()).build());
+            imageInfoList.add(Carousel.builder().images(recent.images()).type(CarouselType.IMAGE.getType()).build());
         }
     }
 
     public void bind(final Recent recent) {
         this.recent = recent;
         Glide.with(itemView.getContext()).load(recent.images().lowResolution().url()).into(imageView);
+        playIv.setVisibility(RecentType.VIDEO.getType().toLowerCase().equals(recent.type()) ? View.VISIBLE : View.GONE);
 
         if (isCarouseEmpty(recent)) {
             morePhotoCountTv.setVisibility(View.GONE);

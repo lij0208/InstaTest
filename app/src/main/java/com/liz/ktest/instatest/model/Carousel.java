@@ -26,8 +26,6 @@ public abstract class Carousel implements Parcelable {
 
     public abstract String type();
 
-//    public abstract Builder toBuilder();
-
     @AutoValue.Builder
     public static abstract class Builder {
 
