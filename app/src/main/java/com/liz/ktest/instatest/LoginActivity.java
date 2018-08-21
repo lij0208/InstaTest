@@ -60,7 +60,7 @@ public class LoginActivity extends AppCompatActivity {
             if (accessToken != null) {
                 saveAccessToken(accessToken);
                 ImageListActivity.go(this, accessToken);
-//                finish();
+                finish();
             } else {
                 saveAccessToken("");
             }
