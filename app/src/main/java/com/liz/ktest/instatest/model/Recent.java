@@ -22,7 +22,11 @@ public abstract class Recent implements Parcelable {
 
     public abstract User user();
 
+    @Nullable
     public abstract Image images();
+
+    @Nullable
+    public abstract Image videos();
 
     @SerializedName("created_time")
     public abstract String createdTime();

@@ -16,6 +16,7 @@ public abstract class Image implements Parcelable {
         return new AutoValue_Image.GsonTypeAdapter(gson);
     }
 
+    @Nullable
     public abstract ImageInfo thumbnail();
 
     @SerializedName("low_resolution")

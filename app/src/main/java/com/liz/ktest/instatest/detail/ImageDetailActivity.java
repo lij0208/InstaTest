@@ -8,6 +8,7 @@ import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.liz.ktest.instatest.R;
+import com.liz.ktest.instatest.model.Carousel;
 import com.liz.ktest.instatest.model.ImageInfo;
 
 import java.util.ArrayList;
@@ -17,7 +18,7 @@ public class ImageDetailActivity extends AppCompatActivity {
 
     public static final String EXTRA_IMAGE_LIST = "EXTRA_IMAGE_LIST";
 
-    private List<ImageInfo> imageInfoList;
+    private List<Carousel> imageInfoList;
     private ViewPager pager;
     private ImageDetailPagerAdapter adapter;
 
@@ -35,7 +36,7 @@ public class ImageDetailActivity extends AppCompatActivity {
         pager.setAdapter(adapter);
     }
 
-    public static void go(Context context, ArrayList<ImageInfo> imageInfoList) {
+    public static void go(Context context, ArrayList<Carousel> imageInfoList) {
         Intent intent = new Intent(context, ImageDetailActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         intent.putExtra(EXTRA_IMAGE_LIST, imageInfoList);

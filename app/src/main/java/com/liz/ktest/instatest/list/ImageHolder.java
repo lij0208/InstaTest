@@ -6,9 +6,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
+import com.liz.ktest.instatest.CarouselType;
 import com.liz.ktest.instatest.GlobalApplication;
 import com.liz.ktest.instatest.R;
+import com.liz.ktest.instatest.RecentType;
 import com.liz.ktest.instatest.detail.ImageDetailActivity;
+import com.liz.ktest.instatest.model.Carousel;
 import com.liz.ktest.instatest.model.ImageInfo;
 import com.liz.ktest.instatest.model.Recent;
 import com.liz.ktest.instatest.utils.StringUtils;
@@ -21,32 +24,30 @@ public class ImageHolder extends RecyclerView.ViewHolder {
     private TextView morePhotoCountTv;
 
     private Recent recent;
-    private ArrayList<ImageInfo> imageInfoList = new ArrayList<>();
+    private ArrayList<Carousel> imageInfoList = new ArrayList<>();
 
     public ImageHolder(View itemView) {
         super(itemView);
         imageView = itemView.findViewById(R.id.imageView);
         morePhotoCountTv = itemView.findViewById(R.id.morePhotoCountTv);
 
-        imageView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                imageInfoList.clear();
-                if (isCarouseEmpty(recent)) {
-                    imageInfoList.add(recent.images().standardResolution());
-                }
-                else {
-                    addCarouselimageinfo();
-                }
-                ImageDetailActivity.go(GlobalApplication.getInstance(), imageInfoList);
-            }
+        imageView.setOnClickListener(v -> {
+            initImageList();
+            ImageDetailActivity.go(GlobalApplication.getInstance(), imageInfoList);
         });
     }
 
-    private void addCarouselimageinfo() {
+    private void initImageList() {
 
-        for (int idx = 0; idx < recent.carousel().size(); idx++) {
-            imageInfoList.add(recent.carousel().get(idx).images().standardResolution());
+        imageInfoList.clear();
+        if (RecentType.VIDEO.getType().toLowerCase().equals(recent.type())) {
+            imageInfoList.add(Carousel.builder().videos(recent.videos()).type(CarouselType.VIDEO.getType()).build());
+        }
+        else if (RecentType.CAROUSEL.getType().toLowerCase().equals(recent.type())) {
+            imageInfoList.addAll(recent.carousel());
+        }
+        else {
+            imageInfoList.add(Carousel.builder().videos(recent.images()).type(CarouselType.IMAGE.getType()).build());
         }
     }
 
